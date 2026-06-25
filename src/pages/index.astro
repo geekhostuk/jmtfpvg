@@ -1,0 +1,460 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Mirrors the `noticeDate` prop from the source design (default "June 2026").
+const noticeDate = 'June 2026';
+
+// External links — update these to the real destinations.
+// TODO: repo not published yet — replace with the real GitHub URL when ready.
+const githubUrl = 'https://github.com/';
+const contactUrl = 'mailto:joe@geekhost.uk';
+
+const stats = [
+  { value: '20.3K', label: 'Races Run', note: 'all-time', color: '#FF7A00' },
+  { value: '408.8K', label: 'Laps Flown', note: 'all-time', color: '#FF7A00' },
+  { value: '4,201', label: 'Total Pilots Flown', note: null, color: '#00D1FF' },
+  { value: '204', label: 'Pilots Registered', note: null, color: '#00D1FF' },
+];
+---
+
+<Layout title="JMT FPV is shutting down — for now">
+  <div class="page">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-mark">JMT</div>
+        <div class="brand-text">
+          <span class="brand-name">JMT FPV LEAGUE</span>
+          <span class="brand-sub">POWERED BY LIFTOFF</span>
+        </div>
+      </div>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span class="status-label">Servers Offline</span>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+      <article class="article">
+        <div class="eyebrow">Service Notice · {noticeDate}</div>
+
+        <h1 class="headline">
+          JMT FPV is shutting down <span class="accent">— for now.</span>
+        </h1>
+
+        <p class="lead">
+          A bit of a sad one. After the recent server failure I tried to get
+          things running again on some kindly donated hardware — but it's just
+          too old to play ball, and with limited time over the summer I've made
+          the call to shut JMT FPV down.
+        </p>
+
+        <!-- Comeback callout -->
+        <div class="callout">
+          <svg
+            class="callout-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5" />
+            <path d="M16 2v4" />
+            <path d="M8 2v4" />
+            <path d="M3 10h5" />
+            <circle cx="16" cy="16" r="6" />
+            <path d="M16 14v2l1 1" />
+          </svg>
+          <div>
+            <div class="callout-kicker">Not forever</div>
+            <div class="callout-body">
+              I'm aiming to bring it back over the <strong>winter</strong> —
+              funds and hardware allowing.
+            </div>
+          </div>
+        </div>
+
+        <p class="body">
+          When I started this, the goal was to build a competition platform that
+          could actually host comps. That got done — and the numbers tell the
+          story.
+        </p>
+
+        <!-- Stats -->
+        <div class="section-label">By the numbers</div>
+        <div class="stats">
+          {
+            stats.map((stat) => (
+              <div class="stat">
+                <div class="stat-value" style={`color:${stat.color};`}>
+                  {stat.value}
+                </div>
+                <div class="stat-label">
+                  {stat.label}
+                  {stat.note && <span class="stat-note"> · {stat.note}</span>}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="body">
+          I'll be packaging it up on GitHub so anyone who wants to run their own
+          league can pick it up and go. If that's you —
+          <a href={contactUrl} class="inline-link">feel free to reach out</a>.
+        </p>
+
+        <!-- GitHub CTA -->
+        <a href={githubUrl} class="cta" target="_blank" rel="noopener noreferrer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="6" x2="6" y1="3" y2="15" />
+            <circle cx="18" cy="6" r="3" />
+            <circle cx="6" cy="18" r="3" />
+            <path d="M18 9a9 9 0 0 1-9 9" />
+          </svg>
+          Get the code on GitHub
+        </a>
+
+        <!-- Thank you -->
+        <div class="thanks">
+          <p class="body">
+            A massive thank you to everyone who flew, hosted, sponsored, broke my
+            bots, and generally made it worth doing. It's been a genuine pleasure.
+          </p>
+          <p class="signoff">See you in your lobbies.</p>
+          <p class="signature">— JesusMcTwos</p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span class="footer-brand">JMT FPV LEAGUE</span>
+      <span class="footer-tag">Weekly FPV competition powered by Liftoff.</span>
+      <span class="footer-url">jmtfpv.com</span>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #0b0f14;
+    color: #f8fafc;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    background: #121923;
+    border-bottom: 2px solid #ff7a00;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: #0b0f14;
+    border: 2px solid #ff7a00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #ff7a00;
+    letter-spacing: 0.04em;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .brand-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: #f8fafc;
+  }
+  .brand-sub {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: #6b7a8d;
+    margin-top: 3px;
+  }
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid #263241;
+    border-radius: 9999px;
+    background: #0b0f14;
+  }
+  .status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 9999px;
+    background: #f59e0b;
+    animation: jmtPulse 2.4s ease-in-out infinite;
+  }
+  .status-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f59e0b;
+  }
+
+  /* Main */
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1.5rem 3rem;
+  }
+  .article {
+    width: 100%;
+    max-width: 680px;
+  }
+  .eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ff7a00;
+    margin-bottom: 1rem;
+  }
+  .headline {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 8vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    margin: 0 0 1.25rem;
+    color: #f8fafc;
+  }
+  .accent {
+    color: #ff7a00;
+  }
+  .lead {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #b6c2cf;
+    margin: 0 0 2.25rem;
+  }
+  .body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #b6c2cf;
+    margin: 0 0 2.5rem;
+  }
+
+  /* Callout */
+  .callout {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #121923 0%, #1a2430 100%);
+    border: 1px solid #263241;
+    border-left: 4px solid #ff7a00;
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 2.5rem;
+  }
+  .callout-icon {
+    color: #ff7a00;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .callout-kicker {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ff7a00;
+    margin-bottom: 0.35rem;
+  }
+  .callout-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #f8fafc;
+  }
+  .callout-body strong {
+    color: #f8fafc;
+  }
+
+  /* Stats */
+  .section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7a8d;
+    margin: 1.75rem 0 0.85rem;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #263241;
+    border: 1px solid #263241;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+  .stat {
+    background: #121923;
+    padding: 1.5rem 1.6rem;
+  }
+  .stat-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7a8d;
+    margin-top: 0.5rem;
+  }
+  .stat-note {
+    color: #3e4c5a;
+  }
+
+  /* Links + CTA */
+  .inline-link {
+    color: #ff7a00;
+    font-weight: 600;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #ff7a00;
+    color: #0b0f14;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 150ms ease;
+  }
+  .cta:hover {
+    background: #ff9a3d;
+    box-shadow: 0 0 20px rgba(255, 122, 0, 0.4);
+  }
+  .cta:focus-visible {
+    outline: 2px solid #f8fafc;
+    outline-offset: 3px;
+  }
+
+  /* Thank you */
+  .thanks {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #1e2a38;
+  }
+  .thanks .body {
+    margin: 0 0 1.5rem;
+  }
+  .signoff {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+    color: #f8fafc;
+    margin: 0 0 0.4rem;
+  }
+  .signature {
+    font-size: 0.95rem;
+    color: #6b7a8d;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Footer */
+  .site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1.25rem 2rem;
+    background: #121923;
+    border-top: 1px solid #263241;
+  }
+  .footer-brand {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: #f8fafc;
+  }
+  .footer-tag,
+  .footer-url {
+    font-size: 0.78rem;
+    color: #6b7a8d;
+  }
+  .footer-url {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  @media (max-width: 560px) {
+    .site-header {
+      padding: 0 1.25rem;
+    }
+    .status-label {
+      display: none;
+    }
+    .main {
+      padding: 2.5rem 1.25rem 2.5rem;
+    }
+  }
+</style>
